@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAPIWeather.Pages.WeatherInfoPage"
+             xmlns:vm="clr-namespace:MauiAPIWeather.ViewModels"
+             x:DataType="vm:WeatherInfoPageViewModel"
+             BackgroundColor="CadetBlue"
+             Title="Weather Information">
+    <VerticalStackLayout>
+        <Frame Margin="20">
+            <Grid ColumnSpacing="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Entry Placeholder="Lat" Grid.Column="0" FontAttributes="Bold" TextColor="CadetBlue" Text="{Binding Latitude}" />
+                <Entry Placeholder="Lng" Grid.Column="1" FontAttributes="Bold" TextColor="CadetBlue" Text="{Binding Longitude}" />
+                <Button Text="Fetch" Grid.Column="2" BackgroundColor="CadetBlue" Command="{Binding ExternalFetchWeatherInformationCommand}" />
+            </Grid>
+        </Frame>
+
+        <Image WidthRequest="100" HeightRequest="100" Source="{Binding WeatherIcon}" />
+        <Label HorizontalOptions="Center" FontSize="70" TextColor="White" Text="{Binding Temperature}" />
+        <Label HorizontalOptions="Center" FontSize="25" FontAttributes="Bold" TextColor="White" Text="{Binding WeatherDescription}" />
+        <Label HorizontalOptions="Center" FontSize="25" FontAttributes="Bold" TextColor="White" Text="{Binding  Location}" />
+
+        <Grid Margin="20" ColumnSpacing="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Frame Grid.Column="0">
+                <VerticalStackLayout>
+                    <Label Text="{Binding Humidity}" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold" TextColor="CadetBlue" />
+                    <Label Text="Humidity" HorizontalOptions="Center" FontSize="15" TextColor="CadetBlue" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame Grid.Column="1">
+                <VerticalStackLayout>
+                    <Label Text="{Binding CloudCoverLevel}" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold" TextColor="CadetBlue" />
+                    <Label Text="Cloud Cover" HorizontalOptions="Center" FontSize="15" TextColor="CadetBlue" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame Grid.Column="2">
+                <VerticalStackLayout>
+                    <Label Text="{Binding IsDay}" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold" TextColor="CadetBlue" />
+                    <Label Text="Is Day" HorizontalOptions="Center" FontSize="15" TextColor="CadetBlue" />
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
+
+
+    </VerticalStackLayout>
+</ContentPage>
